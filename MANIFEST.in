@@ -1,0 +1,2 @@
+recursive-include pub_sub_demo/templates *
+recursive-include pub_sub_demo/static *

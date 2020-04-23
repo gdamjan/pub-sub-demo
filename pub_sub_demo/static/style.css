@@ -1,0 +1,45 @@
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #fff;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #eeeeee6e;
+}
+#publish {
+  mask-image: url(arrow-circle-left.svg);
+  -webkit-mask-image: url(arrow-circle-left.svg);
+  top: calc(50vh - 60px);
+  position: fixed;
+}
+.icon {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  background: gray;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+.icon:hover { background-color: black }
+.icon:active { background-color: red; }
+
+#nchan_stub_status {
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  margin: 8px;
+}
