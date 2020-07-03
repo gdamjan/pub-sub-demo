@@ -7,9 +7,9 @@ RUN apt-get -y install \
 
 ## Install latest nchan from source code
 RUN curl -L -O https://github.com/slact/nchan/archive/v1.2.7.tar.gz && \
-    curl -L -O http://archive.ubuntu.com/ubuntu/pool/main/n/nginx/nginx_1.17.10.orig.tar.gz && \
-    tar xf v1.2.7.tar.gz && tar xf nginx_1.17.10.orig.tar.gz && \
-    cd nginx-1.17.10 && \
+    curl -L -O http://archive.ubuntu.com/ubuntu/pool/main/n/nginx/nginx_1.18.0.orig.tar.gz && \
+    tar xf v1.2.7.tar.gz && tar xf nginx_1.18.0.orig.tar.gz && \
+    cd nginx-1.18.0 && \
     ./configure --with-compat --add-dynamic-module=/nchan-1.2.7 && \
     make
 
@@ -32,7 +32,7 @@ RUN apt-get -y update && \
     apt-get -y install --no-install-recommends \
         python3 nginx-light
 
-COPY --from=nchan-builder /nginx-1.17.10/objs/ngx_nchan_module.so /usr/lib/nginx/modules/ngx_nchan_module.so
+COPY --from=nchan-builder /nginx-1.18.0/objs/ngx_nchan_module.so /usr/lib/nginx/modules/ngx_nchan_module.so
 COPY --from=py-builder /srv/pub_sub_demo /srv/pub_sub_demo
 COPY nginx.conf /etc/nginx/nginx.conf
 
