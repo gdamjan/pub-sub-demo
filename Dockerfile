@@ -22,5 +22,6 @@ COPY --from=py-builder /srv/pub_sub_demo /srv/pub_sub_demo
 COPY nginx.conf /etc/nginx/nginx.conf
 
 ENV PYTHONUSERBASE=/srv/pub_sub_demo/
-ENV FLASK_APP=pub_sub_demo.app
-CMD nginx && $PYTHONUSERBASE/bin/flask run
+ENV FLASK_APP=pub_sub_demo.app:app
+ENV PORT=5000
+CMD nginx && $PYTHONUSERBASE/bin/gunicorn --log-level warning $FLASK_APP
