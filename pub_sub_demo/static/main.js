@@ -21,13 +21,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // get stats
   async function nchan_status() {
-    const nchanStatus = document.querySelector("#nchan_stub_status pre");
-    const resp = await fetch("nchan_stub_status");
-    const text = await resp.text();
-    nchanStatus.innerText = text;
+    while (true) {
+      const nchanStatus = document.querySelector("#nchan_stub_status pre");
+      const resp = await fetch("nchan_stub_status");
+      const text = await resp.text();
+      nchanStatus.innerText = text;
+      await delay(5000);
+    }
   }
   nchan_status();
-  setInterval(nchan_status, 5000);
 
   async function publish_dummy_data() {
     let url = "/publish?topic=one";
@@ -44,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
       body: JSON.stringify(data),
     });
     console.log(await res.text());
+  }
+
+  function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   document
