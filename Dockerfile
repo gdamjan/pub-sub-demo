@@ -1,5 +1,6 @@
 FROM debian:bullseye as py-builder
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update
 RUN apt-get -y install \
         python3-setuptools python3-wheel python3-pip
@@ -12,6 +13,7 @@ RUN pip3 install --user /src
 ## Runtime image
 FROM debian:bullseye
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update && \
     apt-get -y install --no-install-recommends \
         python3 nginx-light libnginx-mod-nchan
