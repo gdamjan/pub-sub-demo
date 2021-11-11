@@ -16,7 +16,7 @@ FROM debian:bullseye
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update && \
     apt-get -y install --no-install-recommends \
-        python3 nginx-light libnginx-mod-nchan
+        python3 python3-setuptools nginx-light libnginx-mod-nchan
 
 COPY --from=py-builder /srv/pub_sub_demo /srv/pub_sub_demo
 COPY nginx.conf /etc/nginx/nginx.conf
