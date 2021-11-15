@@ -6,7 +6,8 @@ RUN apt-get -y install \
         python3-setuptools python3-wheel python3-pip
 
 ENV PYTHONUSERBASE=/srv/pub_sub_demo/
-COPY . /src/
+COPY setup.py MANIFEST.in /src
+COPY pub_sub_demo /src/pub_sub_demo
 RUN pip3 install --user /src
 
 
